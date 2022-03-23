@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id=" app">
+        <sample-component>123</sample-component>
+    </div>
+    <script type="text/x-template" id="sample">
+        <div>Test {{ text }}</div>
+    </script>
+    <script>
+        const app = vue.createApp({})
+        app.component('sample-component', {
+            template: '#sample',
+            data() {
+                return {
+                    text: 'something',
+                }
+            }
+        })
+        app.mount('#app')
+    </script>
+    <script src="https://unpkg.com/vue@3"></script>
+</body>
+
+</html>

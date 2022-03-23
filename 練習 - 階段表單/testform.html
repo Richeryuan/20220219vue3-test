@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+
+<div id="app">
+  <keep-alive>
+    <component :is="currentForm" @setting-form="updateForm" @update="updateInfo" :form-data="computedForm"></component>
+  </keep-alive>
+</div>
+
+<script type="text/x-template" id="form1">
+  <label>姓名</label>
+  <input v-model="name"> <br/>
+  <label>電話</label>
+  <input v-model="phone"> <br/>
+  <input type="button" value="下一步" @click="nextSteps">
+</script>
+
+<script type="text/x-template" id="form2">
+  <label>地址</label>
+  <input v-model="address"> <br/>
+  <input type="button" value="上一步" @click="preSteps">
+  <input type="button" value="下一步" @click="nextSteps">
+</script>
+
+
+<script type="text/x-template" id="form3">
+  <label>您的資料</label>
+  <div>{{ formData.name }}</div>
+  <div>{{ formData.phone }}</div>
+  <div>{{ formData.address }}</div>
+  <input type="button" value="上一步" @click="preSteps">
+</script>
+<script src="https://unpkg.com/vue@3"></script>
+
+<script src="testform.js"></script>
+</body>
+</html>
+<!-- appworks school -->

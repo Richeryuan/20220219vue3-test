@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <sample-component :parent-text="text"></sample-component>
+    </div>
+    <script type="text/x-template" id="sample">
+
+    <div>Parent text {{ parentText }}</div>
+    <div>my text {{ parentText }}</div>
+   </script>
+    <script>
+        const appp = Vue.createApp({
+            data() {
+                return {
+                    text: 'Cool'
+                }
+            }
+        })
+        app.component('sample-component', {
+            template: '#sample',
+            props: {
+                'parentText': {
+                    type: [String]
+                },
+                'parentNumber': {
+                    type: [Number, Boolean],
+                    required: true,
+                    default: 12,
+                    validator: value => value > 20
+                }
+            },
+            data() {
+                return {
+                    text: 'something'
+                }
+            }
+        })
+        app.mount('#app')
+    </script>
+    <script src="https://unpkg.com/vue@3"></script>
+</body>
+
+</html>

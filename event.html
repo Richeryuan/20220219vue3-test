@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <my-component @notice="noticeNumber"></my-component>
+    </div>
+    <!-- <script src="https://unpkg.com/vue@3"></script>--> <!--  Vue CDN -->
+
+    <script src="https://unpkg.com/vue@3"></script>
+    <script>
+        const app = vue.creatApp({
+            methods:{
+                noticeNumber(number){
+                    if(number > 5) alert('數量超過5')
+                }
+            }
+        })
+    app.component('my-component', {
+        template: '<input v-model="number">',
+        data(){
+            return{
+                number:0
+            }
+        },
+        watch:{
+            number:{
+                handler(val){
+                    this.$emit('notice', val)
+                }
+            }
+        }
+    })
+    app.mount('#app')
+</script>
+
+</body>
+</html>
+
+
+
